@@ -354,18 +354,12 @@ Dictionary* countEachCharInString(char* str) {
     int count = 0;
     Dictionary* dictionary = createDictionary();
     //char alphabets [26]= {'a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-    char alphabets [26] = {'\0'};
-    for(i = 0; i < 26; i++){
-        alphabets[i] = 'a' + i;
+    char alphabets [95] = {'\0'};
+    for(i = 0; i < 95; i++){
+        alphabets[i] = ' ' + i;
     }
     i = 0;
-    while(str[i] != '\0')   {
-        if(str[i] >= 'A' && str[i] <= 'Z') {
-            str[i] = convertUpperToLower(str[i]);
-        }
-        i++;
-    }
-    for(i = 0; i < 26; i++) {
+    for(i = 0; i < 95; i++) {
         count = charCount(alphabets[i], str);
         if(count != 0) {
             // put alphabets[i] and count together like a dict;
@@ -450,7 +444,7 @@ BinaryData* createHuffmannCodeFromString(char* str) {
 }
 
 int main() {
-    char str[32];
+    char str[2048];
     printf("What string would you like to convert to Huffmann Code: ");
     fgets(str, sizeof(str), stdin);
     size_t len = strlen(str);
