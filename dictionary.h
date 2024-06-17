@@ -17,7 +17,7 @@ Dictionary* resize(Dictionary* dict);
 void addToDictionary(Dictionary* dict, char key, int value);
 void printEntry(Entry entry);
 int giveKeyreturnValue(Dictionary* dict, char key);
-bool searchKey(Dictionary* dict, char key);
+//bool searchKey(Dictionary* dict, char key);
 void printDictionary(Dictionary* dict);
 void freeDictionary(Dictionary* dict);
 #endif 
