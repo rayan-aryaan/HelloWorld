@@ -444,7 +444,7 @@ BinaryData* createHuffmannCodeFromString(char* str) {
 }
 
 int main() {
-    char str[2048];
+    char str[4096];
     printf("What string would you like to convert to Huffmann Code: ");
     fgets(str, sizeof(str), stdin);
     size_t len = strlen(str);
