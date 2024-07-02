@@ -10,21 +10,28 @@
 
 #define BUFFER_SIZE 1024
 
+int inititalizeWinsock() {
+    int result;
+    WSADATA wsaData;
+    result = WSAStartup(MAKEWORD(2, 2), &wsaData);
+    if (result != 0) {
+        printf("WSAStartup failed: %d\n", result);
+        return -1;
+    }
+    return 1;
+}
+
 int main(int argc, char** argv) {
     if (argc < 2) {
         printf("No port no specified\n");
         return 1;
     }
-    WSADATA wsaData;
+    if(inititalizeWinsock() == -1) {
+        return -1;
+    }
     int result;
     struct sockaddr_in serverAddress;
     int addrlen = sizeof(serverAddress);
-    result = WSAStartup(MAKEWORD(2, 2), &wsaData);
-    if (result != 0) {
-        printf("WSAStartup failed: %d\n", result);
-        return 1;
-    }
-
     // Create a SOCKET for connecting to server
     SOCKET clientSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (clientSocket == INVALID_SOCKET) {
